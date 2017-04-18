@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ControleAlunos.Web.Models.Aluno>
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Incluir Aluno", "Create")
+</p>
+@Html.Grid(Model).Columns(columns =>
+{
+columns.Add(foo => foo.Id).Titled("Código").Sortable(true).Filterable(true).SetWidth(50);
+columns.Add(foo => foo.nome).Titled("Nome").Sortable(true).Filterable(true);
+columns.Add(foo => foo.cpf).Titled("CPF").Sortable(true).Filterable(true);
+columns.Add(foo => foo.sexo).Titled("Sexo").Sortable(true);
+columns.Add(foo => foo.telefone).Titled("Telefone").Sortable(true);
+columns.Add(foo => foo.dataNascimento).Titled("Data Nascimento").Format("{0:dd/mm/yyyy}").Sortable(true).Filterable(true);
+columns.Add(foo => foo.dataCadastro).Titled("Data Cadastro").Format("{0:dd/mm/yyyy}").Sortable(true).Filterable(true);
+columns.Add(foo => foo.Cidade.nome).Titled("Cidade").Sortable(true);
+columns.Add()
+.Encoded(false)
+.Sanitized(false)
+.SetWidth(200)
+.RenderValueAs(d =>
+        @<b>
+            @Html.ActionLink("Editar", "Edit", new { id = d.Id }) |
+            @Html.ActionLink("Detalhes", "Details", new { id = d.Id }) |
+            @Html.ActionLink("Excluir", "Delete", new { id = d.Id })
+        </b>);
+}).WithPaging(10)
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/gridmvc.min.js")" type="text/javascript"> </script>
+<script src="~/Scripts/bootstrap.min.js"></script>

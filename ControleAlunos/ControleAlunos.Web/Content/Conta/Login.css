@@ -1,0 +1,77 @@
+﻿.divLogin {
+    margin: 0 auto;
+    position: relative;
+    top: 30px;
+    background-color: #52E6BB;
+    width: 300px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.lblTitulo {
+    position: absolute;
+    top: -10px;
+    left: 3px;
+}
+
+.validaLogin {
+    color: #d9534f !important;
+    position: absolute;
+    top: 35px;
+    left: 100px;
+}
+
+.validaEmail{
+    color: #d9534f !important;
+    position: absolute;
+    top: 85px;
+    left: 90px;
+}
+
+.validaSenha{
+    color: #d9534f !important;
+    position: absolute;
+    top: 135px;
+    left: 100px;
+}
+
+.txtEmail {
+    width: 200px;
+    height: 20px;
+    text-align: center;
+    border-radius: 5px;
+    position: absolute;
+    top: 60px;
+    left: 50px;
+}
+
+.txtSenha {
+    width: 200px;
+    height: 20px;
+    text-align: center;
+    border-radius: 5px;
+    position: absolute;
+    top: 105px;
+    left: 50px;
+}
+
+.lblInscrever{
+    position: absolute;
+    bottom: 15px;
+    right: 100px;
+}
+
+.btnEntrar {
+    position: absolute;
+    display: inline-block;
+    font-weight: normal;
+    line-height: 1.25;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    bottom: 5px;
+    right: 5px;
+    background-color: #65CF54;
+}

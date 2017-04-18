@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    <header>
+        <ul>
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            @if (Request.IsAuthenticated)
+            {
+                <li>@Html.ActionLink("Alunos", "Index", "Alunoes")</li>
+                <li>@Html.ActionLink("Cidades", "Index", "Cidades")</li>
+                <li>@Html.ActionLink("Alunos por Cidade", "Index", "AlunosCidades")</li>
+                <li><a href="#about">Relatórios</a></li>
+                <li>@Html.ActionLink("Gráficos", "Index", "Graficos")</li>
+            }
+        </ul>
+        @if (Request.IsAuthenticated)
+        {
+            using (Html.BeginForm("Logoff", "Conta", FormMethod.Post, new { @class = "logoff", id = "logoffForm" }))
+            {
+                <a href="javascript:document.getElementById('logoffForm').submit()">Sair</a>
+            }
+            <div class="BoasVindas"><b>Bem Vindo @User.Identity.Name</b></div>
+        }      
+    </header>
+    <section>
+        <div class="container body-content">
+            @RenderBody()
+        </div>
+    </section>
+    <footer class="footer">
+        <p>&copy; @DateTime.Now.Year - Willian Campos</p>
+    </footer>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+﻿@model ControleAlunos.Web.Models.Usuario
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+
+    <section>
+        @using (Html.BeginForm("Login", "Conta", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+            {
+            <div class="divLogin">
+                <h3 class="lblTitulo">Entar no sistema</h3>
+                @Html.ValidationSummary(true, "", new { @class = "validaLogin" })
+                @Html.TextBoxFor(m => m.email, new { @class = "txtEmail", placeholder = "E-mail" })
+                @Html.ValidationMessageFor(m => m.email, "", new { @class = "validaEmail" })
+                @Html.PasswordFor(m => m.senha, new { @class = "txtSenha", placeholder = "Senha" })
+                @Html.ValidationMessageFor(m => m.senha, "", new { @class = "validaSenha" })
+                <input type="submit" class="btnEntrar" value="Entrar" />
+                @Html.ActionLink("Me inscrever", "Create", "Usuarios", null, new { @class = "lblInscrever" })
+            </div>
+        }
+    </section>
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<link href="~/Content/Conta/Login.css" rel="stylesheet" />

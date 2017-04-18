@@ -1,0 +1,29 @@
+﻿@model IEnumerable<ControleAlunos.Web.Models.Cidade>
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Alunos por cidade</h2>
+
+@Html.Grid(Model).Columns(columns =>
+{
+columns.Add(foo => foo.nome).Titled("Nome").Sortable(true).Filterable(true);
+columns.Add(foo => foo.estado).Titled("Estado").Sortable(true).Filterable(true);
+columns.Add(foo => foo.cep).Titled("CEP").Sortable(true).Filterable(true).SetWidth(50);
+columns.Add()
+        .Encoded(false)
+        .SetWidth(50)
+        .Sanitized(false)
+        .SetWidth(100)
+        .RenderValueAs(d =>
+        @<b>
+            @Html.ActionLink("Detalhes", "Details", new { id = d.Id })
+        </b>);
+}).WithPaging(5)
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/gridmvc.min.js")" type="text/javascript"> </script>
+<script src="~/Scripts/bootstrap.min.js"></script>
